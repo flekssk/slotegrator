@@ -7,11 +7,13 @@ use Assert\Assertion;
 class PollList
 {
     /**
-     * @param Poll[] $polls
+     * @var Poll[]
      */
-    public function __construct(private array $polls)
+    private array $polls;
+
+    public function __construct(Poll ...$polls)
     {
-        Assertion::allIsInstanceOf($polls, Poll::class);
+        $this->polls = $polls;
     }
 
     /**

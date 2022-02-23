@@ -10,7 +10,7 @@ class StaticContainer
 {
     private static ContainerBuilder $container;
 
-    public static function setContainer(ContainerBuilder $container)
+    public static function setContainer(ContainerBuilder $container): void
     {
         self::$container = $container;
     }

@@ -20,13 +20,13 @@ use tests\Meals\Functional\FunctionalTestCase;
 
 class EmployeeGetsActivePollTest extends FunctionalTestCase
 {
-    public function testSuccessful()
+    public function testSuccessful(): void
     {
         $poll = $this->performTestMethod($this->getEmployeeWithPermissions(), $this->getPoll(true));
         verify($poll)->equals($poll);
     }
 
-    public function testUserHasNotPermissions()
+    public function testUserHasNotPermissions(): void
     {
         $this->expectException(AccessDeniedException::class);
 
@@ -34,7 +34,7 @@ class EmployeeGetsActivePollTest extends FunctionalTestCase
         verify($poll)->equals($poll);
     }
 
-    public function testPollIsNotActive()
+    public function testPollIsNotActive(): void
     {
         $this->expectException(PollIsNotActiveException::class);
 
@@ -65,9 +65,9 @@ class EmployeeGetsActivePollTest extends FunctionalTestCase
         return new User(
             1,
             new PermissionList(
-                [
-                    new Permission(Permission::VIEW_ACTIVE_POLLS),
-                ]
+                new Permission(
+                    Permission::VIEW_ACTIVE_POLLS
+                )
             ),
         );
     }
@@ -86,7 +86,7 @@ class EmployeeGetsActivePollTest extends FunctionalTestCase
     {
         return new User(
             1,
-            new PermissionList([]),
+            new PermissionList(),
         );
     }
 
@@ -98,7 +98,7 @@ class EmployeeGetsActivePollTest extends FunctionalTestCase
             new Menu(
                 1,
                 'title',
-                new DishList([]),
+                new DishList(),
             )
         );
     }

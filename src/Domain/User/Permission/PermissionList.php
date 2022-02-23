@@ -9,11 +9,16 @@ use Assert\Assertion;
 class PermissionList
 {
     /**
+     * @var Permission[]
+     */
+    private array $permissions;
+
+    /**
      * @param Permission[] $permissions
      */
-    public function __construct(private array $permissions)
+    public function __construct(Permission ...$permissions)
     {
-        Assertion::allIsInstanceOf($permissions, Permission::class);
+        $this->permissions = $permissions;
     }
 
     /**

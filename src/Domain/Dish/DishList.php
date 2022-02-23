@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Meals\Domain\Dish;
 
-use Assert\Assertion;
-
 class DishList
 {
+    private array $dishes;
+
     /**
      * @param Dish[] $dishes
      */
-    public function __construct(private array $dishes)
+    public function __construct(Dish ...$dishes)
     {
-        Assertion::allIsInstanceOf($dishes, Dish::class);
+        $this->dishes = $dishes;
     }
 
     /**
